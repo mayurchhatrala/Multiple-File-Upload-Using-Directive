@@ -1,6 +1,7 @@
-// define Images for store multiple Images
+// define Images for store multiple Files
 var images = [];
 
+// get images and store multiple files in images array.
 app.directive('file', function () {
         return {
             scope: {file: '='},
@@ -18,3 +19,29 @@ app.directive('file', function () {
         };
 });
 
+// Controller to save Multiple Files.
+function saveSubCategory() {
+        
+        $http({
+                method: 'POST',
+                url: "file path",
+                headers: {'Content-Type': 'json'},
+                data: {
+                    yourfileName: images
+                },
+                transformRequest: function (data, headersGetter) {
+                        
+                    for (var i = 0; i < data.yourfileName.length; i++) {
+                        //add each file to the form data and iteratively name them
+                        formData.append("file_" + i, data.yourfileName[i]);
+                    }
+                        
+                    var headers = headersGetter();
+                    delete headers['Content-Type'];
+                    return formData;
+                }
+        }).success(function (response) {
+                alert(response);
+        }
+        
+}
