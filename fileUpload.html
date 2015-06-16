@@ -1,0 +1,14 @@
+<html>
+    <head> 
+        <title> Multiple File upload using directive </title> 
+        <script src="fileUpload.js"> </script>
+    </head>
+    <body ng-app="app">
+        <h1> Select Multiple File </h1>
+        <form name="form" enctype="multipart/form-data">
+            <input type="file" file="file" name="image" accept="image/*" multiple /> 
+            <input type="submit" value="Save Changes" ng-click="saveSubCategory()" />
+
+        </form>
+    </body>
+</html>
